@@ -52,14 +52,14 @@ public class PatronServiceImpl implements PatronService {
         long id;
         try {
             id = Long.parseLong(patronListReq.getId());
-
-            Optional<PatronListEntity> existing = this.patronListRepository.findById(id);
-            if (existing.isEmpty()) {
-                throw new ItemNotFoundException("Record not found");
-            }
         } catch (Exception _) {
+            throw new RuntimeException("invalid id");
         }
 
+        Optional<PatronListEntity> existing = this.patronListRepository.findById(id);
+        if (existing.isEmpty()) {
+            throw new ItemNotFoundException("Record not found");
+        }
 
         PatronListEntity patronListEntity = this.patronListTransformer.toEntity(patronListReq);
         try {
