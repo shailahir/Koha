@@ -15,10 +15,6 @@ public class PatronsController {
 
     private PatronService patronService;
 
-    @GetMapping("/list")
-    public void getPatronLists() {
-    }
-
     @PostMapping("/list")
     public ResponseEntity<PatronListResp> addPatronList(
             @RequestBody

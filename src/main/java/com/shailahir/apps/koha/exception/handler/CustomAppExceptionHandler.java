@@ -64,7 +64,6 @@ public class CustomAppExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     public ResponseEntity<ApiErrorDto> handleException(Throwable ex) {
-//        ex.printStackTrace();
 
         String value = this.messageSource.getMessage("generic.internal.error", null, LocaleContextHolder.getLocale());
         ApiErrorDto apiErrorDto = new ApiErrorDto(null, value);
