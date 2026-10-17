@@ -31,7 +31,14 @@ public class PatronsController {
     }
 
     @PutMapping("/list")
-    public void updatePatronList() {
+    public ResponseEntity<PatronListResp> updatePatronList(
+            @RequestBody
+            @Valid
+            @ValidPatronListReq(mode = "update")
+            AddEditPatronListReq patronListReq) {
+
+        PatronListResp resp = this.patronService.updatePatronList(patronListReq);
+        return ResponseEntity.ok(resp);
     }
 
     @Autowired

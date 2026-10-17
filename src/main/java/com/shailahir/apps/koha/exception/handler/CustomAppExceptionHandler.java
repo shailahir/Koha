@@ -1,6 +1,7 @@
 package com.shailahir.apps.koha.exception.handler;
 
 import com.shailahir.apps.koha.dto.ApiErrorDto;
+import com.shailahir.apps.koha.exception.ItemNotFoundException;
 import com.shailahir.apps.koha.exception.NoOwnerDefinedException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,13 @@ public class CustomAppExceptionHandler {
 //        ex.printStackTrace();
 
         String value = this.messageSource.getMessage("generic.internal.error", null, LocaleContextHolder.getLocale());
+        ApiErrorDto apiErrorDto = new ApiErrorDto(null, value);
+        return ResponseEntity.internalServerError().body(apiErrorDto);
+    }
+
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ResponseEntity<ApiErrorDto> handleException(ItemNotFoundException ex) {
+        String value = this.messageSource.getMessage("item.not.found", null, LocaleContextHolder.getLocale());
         ApiErrorDto apiErrorDto = new ApiErrorDto(null, value);
         return ResponseEntity.internalServerError().body(apiErrorDto);
     }

@@ -3,6 +3,7 @@ package com.shailahir.apps.koha.service.impl;
 import com.shailahir.apps.koha.dto.AddEditPatronListReq;
 import com.shailahir.apps.koha.dto.PatronListResp;
 import com.shailahir.apps.koha.entity.PatronListEntity;
+import com.shailahir.apps.koha.exception.ItemNotFoundException;
 import com.shailahir.apps.koha.exception.NoOwnerDefinedException;
 import com.shailahir.apps.koha.repository.PatronListRepository;
 import com.shailahir.apps.koha.service.PatronService;
@@ -12,6 +13,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import java.util.Optional;
 
 @Service
 public class PatronServiceImpl implements PatronService {
@@ -27,8 +30,36 @@ public class PatronServiceImpl implements PatronService {
         String ownerId = this.userService.getCurrentLoggedInUser();
 
         if (!StringUtils.hasLength(ownerId)) {
-            throw new NoOwnerDefinedException();
+            throw new NoOwnerDefinedException("");
         }
+
+        PatronListEntity patronListEntity = this.patronListTransformer.toEntity(patronListReq);
+        try {
+            patronListEntity.setOwner(Integer.parseInt(ownerId));
+        } catch (Exception e) {
+            patronListEntity.setOwner(null);
+        }
+        PatronListEntity savedEntity = patronListRepository.save(patronListEntity);
+
+        return this.patronListTransformer.toDto(savedEntity);
+    }
+
+    @Override
+    @Transactional
+    public PatronListResp updatePatronList(AddEditPatronListReq patronListReq) {
+        String ownerId = this.userService.getCurrentLoggedInUser();
+
+        long id;
+        try {
+            id = Long.parseLong(patronListReq.getId());
+
+            Optional<PatronListEntity> existing = this.patronListRepository.findById(id);
+            if (existing.isEmpty()) {
+                throw new ItemNotFoundException("Record not found");
+            }
+        } catch (Exception _) {
+        }
+
 
         PatronListEntity patronListEntity = this.patronListTransformer.toEntity(patronListReq);
         try {
