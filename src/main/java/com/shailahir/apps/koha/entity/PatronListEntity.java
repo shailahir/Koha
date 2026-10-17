@@ -15,18 +15,20 @@ import lombok.Setter;
 public class PatronListEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "patronListIdGen",
+            sequenceName = "patron_list_id_seq",
+            allocationSize = 1
+    )
     @Column(name = "patron_list_id")
-    private long id;
+    private Long id;
 
     private String name;
-
-    // TODO: FKEY
-    private int owner;
-
+    private Integer owner;
     private int shared;
 
     @Version
-    private int version;
+    private Integer version;
 
 }

@@ -7,6 +7,8 @@ import com.shailahir.apps.koha.exception.NoOwnerDefinedException;
 import com.shailahir.apps.koha.repository.PatronListRepository;
 import com.shailahir.apps.koha.service.PatronService;
 import com.shailahir.apps.koha.service.UserService;
+import com.shailahir.apps.koha.transform.PatronListTransformer;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -16,8 +18,10 @@ public class PatronServiceImpl implements PatronService {
 
     private UserService userService;
     private PatronListRepository patronListRepository;
+    private PatronListTransformer patronListTransformer;
 
     @Override
+    @Transactional
     public PatronListResp addPatronList(AddEditPatronListReq patronListReq) {
 
         String ownerId = this.userService.getCurrentLoggedInUser();
@@ -26,32 +30,29 @@ public class PatronServiceImpl implements PatronService {
             throw new NoOwnerDefinedException();
         }
 
-        if (!StringUtils.hasLength(patronListReq.getName())) {
-            throw new RuntimeException("No list name passed in!");
+        PatronListEntity patronListEntity = this.patronListTransformer.toEntity(patronListReq);
+        try {
+            patronListEntity.setOwner(Integer.parseInt(ownerId));
+        } catch (Exception e) {
+            patronListEntity.setOwner(null);
         }
-
-        PatronListEntity patronListEntity = new PatronListEntity();
-        patronListEntity.setName(patronListReq.getName());
-        patronListEntity.setOwner(Integer.parseInt(ownerId));
-
-        if (StringUtils.hasLength(patronListReq.getShared()) && "Y".equalsIgnoreCase(patronListReq.getShared())) {
-            patronListEntity.setShared(1);
-        } else {
-            patronListEntity.setShared(0);
-        }
-
         PatronListEntity savedEntity = patronListRepository.save(patronListEntity);
 
-        PatronListResp patronListResp = new PatronListResp();
-        patronListResp.setId(String.valueOf(savedEntity.getId()));
-        patronListResp.setName(savedEntity.getName());
-        patronListResp.setShared(savedEntity.getShared() == 1 ? "Y" : "N");
-        
-        return patronListResp;
+        return this.patronListTransformer.toDto(savedEntity);
     }
 
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Autowired
+    public void setPatronListRepository(PatronListRepository patronListRepository) {
+        this.patronListRepository = patronListRepository;
+    }
+
+    @Autowired
+    public void setPatronListTransformer(PatronListTransformer patronListTransformer) {
+        this.patronListTransformer = patronListTransformer;
     }
 }

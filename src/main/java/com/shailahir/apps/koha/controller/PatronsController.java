@@ -3,6 +3,7 @@ package com.shailahir.apps.koha.controller;
 import com.shailahir.apps.koha.dto.AddEditPatronListReq;
 import com.shailahir.apps.koha.dto.PatronListResp;
 import com.shailahir.apps.koha.service.PatronService;
+import com.shailahir.apps.koha.validation.ValidPatronListReq;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +16,15 @@ public class PatronsController {
     private PatronService patronService;
 
     @GetMapping("/list")
-    public void getPatrolLists() {
+    public void getPatronLists() {
     }
 
     @PostMapping("/list")
-    public ResponseEntity<PatronListResp> addPatrolList(@RequestBody @Valid AddEditPatronListReq patronListReq) {
+    public ResponseEntity<PatronListResp> addPatronList(
+            @RequestBody
+            @Valid
+            @ValidPatronListReq(mode = "create")
+            AddEditPatronListReq patronListReq) {
 
         PatronListResp resp = this.patronService.addPatronList(patronListReq);
         return ResponseEntity.ok(resp);

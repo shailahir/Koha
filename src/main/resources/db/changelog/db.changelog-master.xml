@@ -21,4 +21,10 @@
     <include file="./001/create_patron_lists_table.sql"
              relativeToChangelogFile="true"/>
 
+    <include file="./001/add_version_patron_lists.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/add_seq_patron_lists.sql"
+             relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

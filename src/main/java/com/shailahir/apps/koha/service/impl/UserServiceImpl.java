@@ -9,6 +9,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getCurrentLoggedInUser() {
         // TODO: Implementation Pending
-        return "";
+        return "1";
     }
 }

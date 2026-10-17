@@ -1,0 +1,3 @@
+CREATE SEQUENCE patron_list_id_seq
+    START WITH 1
+    INCREMENT BY 1;
