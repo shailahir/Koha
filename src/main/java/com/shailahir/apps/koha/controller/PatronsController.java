@@ -9,11 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/patrons")
 public class PatronsController {
 
     private PatronService patronService;
+
+    // TODO: Add access rules in advice/spring security
+    @GetMapping("/list")
+    public ResponseEntity<List<PatronListResp>> getPatronLists() {
+
+        List<PatronListResp> respList = this.patronService.getPatronLists();
+        return ResponseEntity.ok(respList);
+    }
 
     @PostMapping("/list")
     public ResponseEntity<PatronListResp> addPatronList(

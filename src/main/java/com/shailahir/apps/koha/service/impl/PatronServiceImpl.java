@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -70,6 +71,20 @@ public class PatronServiceImpl implements PatronService {
         PatronListEntity savedEntity = patronListRepository.save(patronListEntity);
 
         return this.patronListTransformer.toDto(savedEntity);
+    }
+
+    @Override
+    public List<PatronListResp> getPatronLists() {
+        String ownerId = this.userService.getCurrentLoggedInUser();
+
+        long id;
+        try {
+            id = Long.parseLong(ownerId);
+        } catch (Exception _) {
+            throw new RuntimeException("invalid id");
+        }
+        List<PatronListEntity> patronListEntities = this.patronListRepository.findGatedPatronListByOwnerId(id);
+        return patronListEntities.stream().map(e -> patronListTransformer.toDto(e)).toList();
     }
 
     @Autowired
