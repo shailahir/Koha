@@ -54,4 +54,7 @@
     <include file="./001/create_bookings_table.sql"
              relativeToChangelogFile="true"/>
 
+    <include file="./001/create_issues_table.sql"
+             relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
