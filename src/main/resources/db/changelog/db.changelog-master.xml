@@ -57,4 +57,14 @@
     <include file="./001/create_issues_table.sql"
              relativeToChangelogFile="true"/>
 
+    <include file="./001/create_old_issues_table.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_cash_registers_table.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_accountlines_table.sql"
+             relativeToChangelogFile="true"/>
+
+
 </databaseChangeLog>

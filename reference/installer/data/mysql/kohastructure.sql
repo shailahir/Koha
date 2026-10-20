@@ -114,7 +114,7 @@ CREATE TABLE `account_offsets` (
 --
 -- Table structure for table `accountlines`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `accountlines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -1801,7 +1801,7 @@ CREATE TABLE `cash_register_actions` (
 --
 -- Table structure for table `cash_registers`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `cash_registers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -4151,7 +4151,7 @@ CREATE TABLE `iso18626_requests` (
 --
 -- Table structure for table `issues`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `issues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -5236,7 +5236,7 @@ CREATE TABLE `oauth_access_tokens` (
 --
 -- Table structure for table `old_issues`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `old_issues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
