@@ -19,7 +19,7 @@
 --
 -- Table structure for table `account_credit_types`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `account_credit_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -37,7 +37,7 @@ CREATE TABLE `account_credit_types` (
 --
 -- Table structure for table `account_credit_types_branches`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `account_credit_types_branches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -54,7 +54,7 @@ CREATE TABLE `account_credit_types_branches` (
 --
 -- Table structure for table `account_debit_types`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `account_debit_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -75,6 +75,7 @@ CREATE TABLE `account_debit_types` (
 -- Table structure for table `account_debit_types_branches`
 --
 
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `account_debit_types_branches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -1551,6 +1552,7 @@ CREATE TABLE `borrower_relationships` (
 -- Table structure for table `borrowers`
 --
 
+<!-- Changeset -->
 DROP TABLE IF EXISTS `borrowers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -1680,7 +1682,7 @@ CREATE TABLE `branch_transfer_limits` (
 --
 -- Table structure for table `branches`
 --
-
+<!-- Changeset created successfully -->
 DROP TABLE IF EXISTS `branches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -1822,6 +1824,7 @@ CREATE TABLE `cash_registers` (
 -- Table structure for table `categories`
 --
 
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -5386,6 +5389,7 @@ CREATE TABLE `patron_list_patrons` (
 -- Table structure for table `patron_lists`
 --
 
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `patron_lists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -6427,6 +6431,7 @@ CREATE TABLE `sip_system_preference_overrides` (
 -- Table structure for table `sms_providers`
 --
 
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `sms_providers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;

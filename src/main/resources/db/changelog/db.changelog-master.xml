@@ -27,4 +27,19 @@
     <include file="./001/add_seq_patron_lists.sql"
              relativeToChangelogFile="true"/>
 
+    <include file="./001/add_seq_borrower.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_account_credit_types_table.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_account_credit_types_branches_table.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_account_debit_types_table.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_account_debit_types_branches_table.sql"
+             relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
