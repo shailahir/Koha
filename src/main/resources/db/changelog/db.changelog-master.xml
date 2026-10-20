@@ -42,4 +42,10 @@
     <include file="./001/create_account_debit_types_branches_table.sql"
              relativeToChangelogFile="true"/>
 
+    <include file="./001/create_biblio_table.sql"
+             relativeToChangelogFile="true"/>
+
+    <include file="./001/create_biblioitems_table.sql"
+             relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

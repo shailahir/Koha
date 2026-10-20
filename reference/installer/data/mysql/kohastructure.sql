@@ -1097,7 +1097,7 @@ CREATE TABLE `background_jobs` (
 --
 -- Table structure for table `biblio`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `biblio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -1188,7 +1188,7 @@ CREATE TABLE `biblio_metadata_errors` (
 --
 -- Table structure for table `biblioitems`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `biblioitems`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
