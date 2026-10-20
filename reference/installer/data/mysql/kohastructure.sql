@@ -1241,7 +1241,7 @@ CREATE TABLE `biblioitems` (
 --
 -- Table structure for table `bookings`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `bookings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
@@ -4287,7 +4287,7 @@ CREATE TABLE `item_groups` (
 --
 -- Table structure for table `items`
 --
-
+<!-- Changeset created -->
 DROP TABLE IF EXISTS `items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
